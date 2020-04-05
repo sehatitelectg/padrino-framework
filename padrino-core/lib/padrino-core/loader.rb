@@ -139,7 +139,8 @@ module Padrino
     #   The paths to require.
     #
     # @example For require all our app libs we need to do:
-    #   require_dependencies("#{Padrino.root}/lib/**/*.rb")
+    #   
+    ("#{Padrino.root}/lib/**/*.rb")
     #
     def require_dependencies(*paths)
       options = { :cyclic => true }.update(paths.last.is_a?(Hash) ? paths.pop : {})
@@ -153,6 +154,7 @@ module Padrino
           begin
             Reloader.safe_load(file, options)
             files.delete(file)
+            puts "Loaded file #{file}"
             loaded = true
           rescue NameError, LoadError => error
             raise if Reloader.exclude.any?{ |path| file.start_with?(path) } || options[:cyclic] == false
