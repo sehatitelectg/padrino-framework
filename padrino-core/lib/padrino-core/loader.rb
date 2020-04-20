@@ -193,9 +193,6 @@ module Padrino
     def default_dependency_paths
       @default_dependency_paths ||= [
         "#{root}/config/database.rb",
-        "#{root}/lib/**/*.rb",
-        "#{root}/models/**/*.rb",
-        "#{root}/shared/**/*.rb",
         "#{root}/config/apps.rb",
       ]
     end
